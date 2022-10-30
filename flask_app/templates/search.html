@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    <title>Tech U Forums</title>
+</head>
+
+<body>
+    <div class="header">
+        <!-- <h1>AWS Tech U Forums</h1> -->
+        <img class="main_logo" src="{{url_for('static',filename='LOGO.png')}}" alt="AWS Forms Logo">
+
+
+        <button class="logout">Logout</button>
+
+    </div>
+    <div class="main">
+        <div class="nav">
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <img src="{{url_for('static',filename='Hamburger_icon.svg.png')}}" alt="">
+            </a>
+            <ul id="links">
+                <li><a href="/home">home</a></li>
+                <li><a href="/search">search</a></li>
+                <li><a href="">TechU</a></li>
+            </ul>
+        </div>
+        <div class="frequent_post_main">
+            <div class="search_post_options">
+                <form class="search_bar" action="">
+                    <input type="text" placeholder=" &#x1F50D;   Search Here">
+                    <button class="blue_button">Advanced Search</button>
+                </form>
+                <form action="">
+                    <input class="blue_button" type="button" value="Create New Post">
+                </form>
+            </div>
+            <div class="top_posts">
+                {% for post in posts %}
+                        <h3><a href="/show/{{post.post_id}}">{{post.subject}}</a></h3>
+                        <div class="top_answer">
+                            <p>Top Answer Here</p>
+                        </div>
+                        {% endfor %}
+                <div class="btns">
+                    <form action=""><input type="button" value="Expand"></form>
+                    <form action=""><input type="button" value="Share"></form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <footer class="bottom_content">
+        <div class="bottom_links">
+            <a class="footers" href="https://aws.amazon.com/privacy/?nc1=f_pr" target="_blank">Privacy</a>
+            <a class="footers" href="https://aws.amazon.com/terms/?nc1=f_pr" target="_blank">Site Terms</a>
+            <a class="footers" href="https://aws.amazon.com/#" target="_blank">Cookie Preference</a>
+        </div>
+        <h3>copyright 2022, Amazon Web Services, Inc. or its affiliates. All rights reserved.</h3>
+    </footer>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("links");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+</body>
+
+</html>

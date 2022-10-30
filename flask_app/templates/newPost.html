@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    <title>Tech U Forums</title>
+</head>
+
+<body>
+    <div class="header">
+        <img class="main_logo" src="{{url_for('static',filename='LOGO.png')}}" alt="AWS Forms Logo">
+        <button class="logout">Logout</button>
+    </div>
+    <div class="main">
+        <div class="nav">
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <img src="{{url_for('static',filename='Hamburger_icon.svg.png')}}" alt="">
+              </a>
+            <ul id="links">
+                <li><a href="/home">home</a></li>
+                <li><a href="/search">search</a></li>
+                <li><a href="">TechU</a></li>
+            </ul>
+        </div>
+        <div class="new_post">
+            <form action="/create_post" method="POST">
+                <label for="subject">Subject</label><br>
+                <input class="post_content" type="text" name="subject" id=""><br>
+
+                <label for="body">Body</label><br>
+                <textarea class="post_content" name="post_body" id="" cols="20" rows="4"></textarea><br>
+
+                <fieldset>
+                    <legend>Tags:</legend>
+                    <div class="tag_container">
+                    <input type="checkbox" name="tags" value="s3">S3 <br>
+                    <input type="checkbox" name="tags" value="lambda">Lambda <br>
+                    <input type="checkbox" name="tags" value="rds">RDS <br>
+                    <input type="checkbox" name="tags" value="dynamo">Dynamo DB <br>
+                    <input type="checkbox" name="tags" value="personal">Personal <br>
+                    <input type="checkbox" name="tags" value="s3">S3 <br>
+                    <input type="checkbox" name="tags" value="lambda">Lambda <br>
+                    <input type="checkbox" name="tags" value="rds">RDS <br>
+                    <input type="checkbox" name="tags" value="dynamo">Dynamo DB <br>
+                    <input type="checkbox" name="tags" value="personal">Personal <br>
+                    <input type="checkbox" name="tags" value="s3">S3 <br>
+                    <input type="checkbox" name="tags" value="lambda">Lambda <br>
+                    <input type="checkbox" name="tags" value="rds">RDS <br>
+                    <input type="checkbox" name="tags" value="dynamo">Dynamo DB <br>
+                    <input type="checkbox" name="tags" value="personal">Personal <br>
+        </div>
+        </fieldset>
+        <input type="submit" value="Post">
+        </form>
+    </div>
+    </div>
+    <footer class="bottom_content">
+      <div class="bottom_links">
+          <a class="footers" href="https://aws.amazon.com/privacy/?nc1=f_pr" target="_blank">Privacy</a>
+          <a class="footers" href="https://aws.amazon.com/terms/?nc1=f_pr" target="_blank">Site Terms</a>
+          <a class="footers" href="https://aws.amazon.com/#" target="_blank">Cookie Preference</a>
+      </div>
+      <h3>copyright 2022, Amazon Web Services, Inc. or its affiliates. All rights reserved.</h3>
+  </footer>
+    <script>
+        function myFunction() {
+          var x = document.getElementById("links");
+          if (x.style.display === "block") {
+            x.style.display = "none";
+          } else {
+            x.style.display = "block";
+          }
+        }
+        </script>
+</body>
+
+</html>

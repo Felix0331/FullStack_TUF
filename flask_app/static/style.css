@@ -1,0 +1,228 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color: aliceblue;
+}
+/* ===============Login Page================= */
+.login_header{
+    margin: 0 auto;
+    text-align: center;
+}
+.login_header img{
+    height: 350px;
+
+}
+.container{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+.register form input{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.login form input{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+/* ============================newPost.html======================================== */
+.logout{
+    margin:25px;
+    background-color: orange;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    height: 10px;
+}
+.nav #links {
+    display: none;
+  }
+
+.icon img{
+    height: 25px;
+}
+.main_logo{
+    height: 50px;
+    padding: 25px;
+    margin: 0px;
+}
+.header{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    border-bottom: solid black;
+    
+}
+
+.nav{
+    border-right: solid black;
+    border-bottom: solid black;
+    padding: 10px;
+}
+.nav ul{
+    list-style: none;
+    padding-left: 5px;
+}
+/* ===================== */
+
+.main{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.new_post{
+    margin-top: 30px;
+    margin-left: 30%;
+    width: 900px;
+}
+.tag_container{
+    border:2px solid #ccc; 
+    width:300px; 
+    height: 200px; 
+    overflow-y: scroll;
+}
+
+fieldset{
+    width: 400px;
+}
+
+.post_content{
+    width: 75%;
+}
+
+/*==================================== userPage.html=============================== */
+
+.user_posts{
+    margin-left: 100px;
+    width: 90%;
+}
+
+.user_content{
+    width: 90%;
+    height: 500px;
+    border: black solid 2px;
+    overflow-y: scroll;
+
+}
+
+.post_or_comment{
+    margin: 30px auto;
+    height: 70px;
+    width: 95%;
+    overflow-y: scroll;
+    border: black solid 2px;
+
+}
+.post_or_comment h3{
+    padding: 0;
+    margin: 0 5px;
+}
+
+/*==================================== AustinPage.html=============================== */
+.frequent_post_main{
+    width: 100%;
+}
+.blue_button{
+
+    margin-left: 10%;
+        background-color: dodgerblue;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+}
+.search_post_options{
+    
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    margin: 10px;
+}
+.top_posts{
+    border: black solid 3px;
+    padding: 5px;
+    margin: 20px;
+}
+
+.top_answer{
+    border: black solid 3px;
+    padding: 5px;
+}
+.btns{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: right;
+    padding: 10px;
+}
+.btns form{
+    margin: 2px
+}
+
+.search_bar{
+    height: 25px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+/* ============= post_view.html =============== */
+.post_content{
+    margin: 50px auto;;
+}
+.post_content div{
+    margin: 0 auto;
+    border: black solid 2px;
+    text-align: center;
+}
+.comment2{
+    padding: 5px;
+    overflow-y: scroll;
+}
+.individual_comment{
+    border: black solid;
+}
+.bottom_links{
+    padding-top: 20px ;
+}
+.bottom_content{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    margin: 10px;
+}
+
+/* ============= home.html =============== */
+.home_main_content{
+    width: 100%;
+}
+.faq_topq{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+.faq_topq div{
+    border: black solid 3px;
+}
+.topq{
+    width: 50%;
+    text-align: center;
+}
+.q_list_items{
+    list-style: none;
+    padding: 0;
+    
+}
+.q_list_items li{
+    margin: 10px;
+}
+.faq{
+    text-align: center;
+}
+
+.creat_search_bts{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: right;
+    margin: 20px;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+
+    <title>Tech U Forums</title>
+</head>
+
+<body>
+    <div class="login_header">
+        <img src="{{url_for('static',filename='LOGO.png')}}" alt="AWS Tech U Forum">
+        <h1>WELCOME!</h1>
+    </div>
+    {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+    {% if messages %}                            <!-- check if there are any messages -->
+        {% for message in messages %}            <!-- loop through the messages -->
+            <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="container">
+        <div class="login">
+            <h1>Login</h1>
+            <form action="/login" method="POST">
+                <label for="email"> Email: </label>
+                <input type="text" name="email"><br>
+
+                <label for="password">Password:</label>
+                <input type="password" name="password"><br>
+                <button>Login</button>
+
+            </form>
+        </div>
+        <div class="register">
+            <h1>Register</h1>
+            <form action="register/user" method="POST">
+                <label for="first_name">First Name: </label>
+                <input type="text" name="first_name"><br>
+
+                <label for="last_name">Last Name: </label>
+                <input type="text" name="last_name"><br>
+
+                <label for="alias"> Alias: </label>
+                <input type="text" name="alias"><br>
+
+                <label for="email"> Email: </label>
+                <input type="text" name="email"><br>
+
+                <label for="password">Password:</label>
+                <input type="password" name="password"><br>
+
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" name="confirm_password"><br>
+                <br>
+                <button>Register</button>
+            </form>
+        </div>
+
+    </div >
+    <footer class="bottom_content">
+    <div class="bottom_links">
+        <a class="footers" href="https://aws.amazon.com/privacy/?nc1=f_pr" target="_blank">Privacy</a>
+        <a class="footers" href="https://aws.amazon.com/terms/?nc1=f_pr" target="_blank">Site Terms</a>
+        <a class="footers" href="https://aws.amazon.com/#" target="_blank">Cookie Preference</a>
+    </div>
+    <h3>copyright 2022, Amazon Web Services, Inc. or its affiliates. All rights reserved.</h3>
+    </footer>
+</body>
+
+</html>

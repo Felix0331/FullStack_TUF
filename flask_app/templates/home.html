@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    <title>Tech U Forums</title>
+</head>
+
+<body>
+    <div class="header">
+        <!-- <h1>AWS Tech U Forums</h1> -->
+        <img class="main_logo" src="{{url_for('static',filename='LOGO.png')}}" alt="AWS Forms Logo">
+
+        <h2>Welcome to Tech U Forum {{session['first_name']}}!!!!!</h2>
+        c
+
+    </div>
+    <div class="main">
+        <div class="nav">
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <img src="{{url_for('static',filename='Hamburger_icon.svg.png')}}" alt="">
+            </a>
+            <ul id="links">
+                <li><a href="/home">home</a></li>
+                <li><a href="/search">search</a></li>
+                <li><a href="">TechU</a></li>
+            </ul>
+        </div>
+
+        <div class="home_main_content">
+            <div class="creat_search_bts">
+                <form action="/add_new_post"><button class="blue_button">Create a Post</button></form>
+                <button class="blue_button">Search</button>
+            </div>
+            <div class="faq_topq">
+                <div class="faq">
+                    <h2 class="h2">Frequently Posted Questions</h2>
+                    <ul class="q_list_items">
+                        <li><a href="https://embark.corp.amazon.com/orientation/welcome" target="_blank">Where can I
+                                complete my embark plan?</a></li>
+
+                        <li><a href="https://broadcast.amazon.com/videos/203282" target="_blank">How do I set up my
+                                Isengard Account?</a></li>
+
+                        <li><a href="https://inside.hr.amazon.dev/us/en/employment/time-off-compensation-benefits/compensation-global/pay.html"
+                                target="_blank">How do I get paid?</a></li>
+
+                        <li><a href="https://281685.tcplusondemand.com/app/webclock/index.html#/EmployeeLogOn/281685"
+                                target="_blank">Where do I clock in and out?</a></li>
+
+                        <li><a href="https://inside.hr.amazon.dev/us/en/employment/time-off-compensation-benefits/benefits-global.html"
+                                target="_blank">What are my benefits?</a></li>
+
+                        <li><a href="https://knet.csod.com/client/knet/default.aspx?ReturnUrl=https%3a%2f%2fknet.csod.com%2fui%2flms-learner-home%2fhome%3ftab_page_id%3d-200300006%26tab_id%3d-1"
+                                target="_blank">Where do I complete my KNET training?</a></li>
+
+                        <li><a href="https://w.amazon.com/bin/view/KNET_SUPPORT" target="_blank">I'm having issues with
+                                KNET!</a></li>
+
+                        <li><a href="https://acloudguru.com/" target="_blank">Where do I go to complete my Cloud Guru
+                                tasks?</a></li>
+
+                        <li><a href="https://app.diagrams.net/" target="_blank">Where can i make a diagram for upcoming
+                                presentation?</a></li>
+
+                        <li><a href="https://w.amazon.com/bin/view/WorkingBackwards/PRFAQ" target="_blank">What is a
+                                PR/FAQ and how does it help me work backwards?</a></li>
+                    </ul>
+                </div>
+                <div class="topq">
+                    <h2>Top Questions</h2>
+                    <ul class="q_list_items">
+                        {% for post in posts %}
+                        <li><a href="/show/{{post.post_id}}">{{post.subject}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="bottom_content">
+        <div class="bottom_links">
+            <a class="footers" href="https://aws.amazon.com/privacy/?nc1=f_pr" target="_blank">Privacy</a>
+            <a class="footers" href="https://aws.amazon.com/terms/?nc1=f_pr" target="_blank">Site Terms</a>
+            <a class="footers" href="https://aws.amazon.com/#" target="_blank">Cookie Preference</a>
+        </div>
+        <h3>copyright 2022, Amazon Web Services, Inc. or its affiliates. All rights reserved.</h3>
+    </footer>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("links");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+</body>
+
+</html>

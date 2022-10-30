@@ -51,20 +51,3 @@ class Post:
         query = "SELECT * FROM posts LEFT JOIN comments ON posts.post_id = comments.post_id WHERE posts.post_id =  %(post_id)s;"
         results = connectToMySQL('mydb').query_db(query,data)
         return results
-
-    @classmethod
-    def edit_car(cls,data):
-        query = "UPDATE cars SET price = %(price)s, model = %(model)s, make = %(make)s,year = %(year)s, description = %(description)s, updated_at = NOW() WHERE cars.id = %(id)s;"
-        return connectToMySQL('cars_db').query_db(query,data)
-
-
-
-    @classmethod
-    def car_purchase(cls,data):
-        query = "UPDATE cars SET sold = %(sold)s, updated_at = NOW() WHERE cars.id = %(id)s;"
-        return connectToMySQL('cars_db').query_db(query,data)
-
-    @classmethod
-    def delete_car(cls,data):
-        query = "DELETE FROM cars WHERE cars.id = %(id)s"
-        return connectToMySQL('cars_db').query_db(query,data)

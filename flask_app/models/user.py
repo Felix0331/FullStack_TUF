@@ -64,37 +64,3 @@ class User:
         if len(result) < 1:
             return False
         return cls(result[0])
-
-    # @classmethod
-    # def buy_car(cls,data):
-    #     query = "INSERT INTO purchases (user_id, car_id,created_at,updated_at) VALUES (%(user_id)s,%(car_id)s,NOW(),NOW());"
-    #     return connectToMySQL('cars_db').query_db(query,data)
-
-    # @classmethod
-    # def get_purchases(cls,data):
-    #     query =  "SELECT * FROM users JOIN purchases ON users.id = purchases.user_id JOIN cars ON cars.id = purchases.car_id WHERE users.id = %(id)s;"
-    #     results = connectToMySQL('cars_db').query_db(query,data)
-    #     try:
-    #         if cls(results[0]):
-    #             cars_purchased = cls(results[0])
-
-    #             for row in results:
-    #                 if row['cars.id'] == None:
-    #                     break
-    #                 data = {
-    #                     "id": row['cars.id'],
-    #                     "price": row['price'],
-    #                     "model": row['model'],
-    #                     "make": row['make'],
-    #                     "year": row['year'],
-    #                     "description": row['description'],
-    #                     "seller_name": row['seller_name'],
-    #                     "seller_id": row['seller_id'],
-    #                     "sold": row['sold'],
-    #                     "created_at": row['cars.updated_at'],
-    #                     "updated_at": row['cars.updated_at']
-    #                 }
-    #                 cars_purchased.purchased_cars.append(car.Car(data))
-    #             return cars_purchased
-    #     except IndexError:
-    #         pass

@@ -70,13 +70,3 @@ def login():
     session["name"] = f'{first_name} {last_name}'
 
     return redirect("/home")
-
-
-
-@app.route('/view_purchases')
-def view_purchases():
-    data = {
-        'id':session['user_id']
-    }
-    cars_purchased = User.get_purchases(data)
-    return render_template('user_purchase.html',my_cars = cars_purchased)

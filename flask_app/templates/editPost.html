@@ -50,9 +50,10 @@
                 {% for comment in post %}
                 <p class="individual_comment">{{comment.comment_body}}</p>
                 <p>Comment by: <a href="">{{comment.commenter_name}}</a></p>
-                        {% if comment['comments.users_id'] == session['user_id']%}
-                                <a href="/edit_comment/{{comment.comment_id}}">edit</a> | <a href="/delete_comment/{{comment.comment_id}}/{{post[0].post_id}}">delete</a>  
-                        {%endif%}
+                {% if post[0].commenter_id == session['user_id']%}
+                            <td><a href="/edit/{{post[0].post_id}}">edit</a> | <a href="/delete/{{post[0].post_id}}">delete</a></td>
+                        
+                {%endif%}
                 {% endfor %}
                
             </div>

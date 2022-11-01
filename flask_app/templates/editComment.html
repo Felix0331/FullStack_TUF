@@ -5,19 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
-
+    <title>Tech U Forums</title>
 </head>
 
 <body>
     <div class="header">
-        <!-- <h1>AWS Tech U Forums</h1> -->
         <img class="main_logo" src="{{url_for('static',filename='LOGO.png')}}" alt="AWS Forms Logo">
-
-
         <form action="/logout"> <button class="logout">Logout</button></form>
-
     </div>
     <div class="main">
         <div class="nav">
@@ -30,48 +25,28 @@
                 <li><a href="">TechU</a></li>
             </ul>
         </div>
-        <div class="post_content">
+        <div class="edit_comment_area">
+            <div>
+                <h1>Edit Your Comment </h1>
+                <h3>{{post.subject}}</h3>
+                <p>{{post.post_body}}</p>
 
-            <div class="comment1">
-                <h3 class="h3post">{{post[0].subject}}</h3>
-                <h4>post by: {{post[0].poster_name}}</h4>
-                <p>
-                    {{post[0].post_body}}
-                </p>
-                {% if post[0].users_id == session['user_id']%}
-                            <td><a href="/edit/{{post[0].post_id}}">edit</a> | <a href="/delete/{{post[0].post_id}}">delete</a></td>
-                        
-                {%endif%}
             </div>
-            <br>
-            <div class="comment2">
-            
-                <h3 class="h3post">Comments</h3>
-                {% for comment in post %}
-                <p class="individual_comment">{{comment.comment_body}}</p>
-                <p>Comment by: <a href="">{{comment.commenter_name}}</a></p>
-                        {% if comment['comments.users_id'] == session['user_id']%}
-                                <a href="/edit_comment/{{comment.comment_id}}">edit</a> | <a href="/delete_comment/{{comment.comment_id}}/{{post[0].post_id}}">delete</a>  
-                        {%endif%}
-                {% endfor %}
-               
-            </div>
-            <br>
-            <div class="comment3">
-            
-                <h3 class="h3post">Add your comment here</h3>
-                <form action="/comment/{{post[0].post_id}}" method="POST">
-                    <textarea name="comment_body" id="" cols="100" rows="10"></textarea><br><br>
 
-                    <button class="button1">Post</button>
-                    
+            <div class="">
+
+                <h3 class="h3post">Edit your comment here</h3>
+                <form action="/update_comment/{{comment.comment_id}}" method="POST">
+                    <input type="hidden" name="post_id" id="" value="{{post.post_id}}">
+                    <textarea name="comment_body" id="" cols="100" rows="10">{{comment.comment_body}}</textarea><br><br>
+                    <button class="button1">Edit</button>
+
                 </form>
-            
+
             </div>
         </div>
 
     </div>
-
     <footer class="bottom_content">
         <div class="bottom_links">
             <a class="footers" href="https://aws.amazon.com/privacy/?nc1=f_pr" target="_blank">Privacy</a>
@@ -80,7 +55,6 @@
         </div>
         <h3>copyright 2022, Amazon Web Services, Inc. or its affiliates. All rights reserved.</h3>
     </footer>
-
     <script>
         function myFunction() {
             var x = document.getElementById("links");
@@ -91,7 +65,6 @@
             }
         }
     </script>
-
 </body>
 
 </html>

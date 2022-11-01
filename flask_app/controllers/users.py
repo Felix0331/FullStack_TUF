@@ -64,6 +64,7 @@ def login():
         return redirect('/')
 
     session['user_id'] = user_in_db.id
+    print(session['user_id'])
     session['first_name'] = user_in_db.first_name
     first_name = user_in_db.first_name
     last_name = user_in_db.last_name

@@ -1,6 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
-from flask_app.models import post
+
 
 
 class Comment:
@@ -24,8 +24,22 @@ class Comment:
         return is_valid
     
     @classmethod
+    def get_comment(cls,data):
+        query = "SELECT * FROM comments WHERE comments.comment_id = %(comment_id)s;"
+        return connectToMySQL('mydb').query_db(query,data)
+
+
+    @classmethod
     def add_comment(cls,data):
         query = "INSERT INTO comments (comment_body, upvotes, commenter_name, users_id, post_id, created_at, updated_at) VALUES (%(comment_body)s,%(upvotes)s,%(commenter_name)s,%(users_id)s,%(post_id)s,NOW(),NOW());"
         return connectToMySQL('mydb').query_db(query,data)
 
-    
+    @classmethod
+    def edit_comment(cls,data):
+        query = "UPDATE comments SET comment_body = %(comment_body)s, updated_at = NOW() WHERE comments.comment_id = %(comment_id)s;"
+        return connectToMySQL('mydb').query_db(query,data)
+        
+    @classmethod
+    def delete_comment(cls,data):
+        query = "DELETE FROM comments WHERE comments.comment_id = %(comment_id)s"
+        return connectToMySQL('mydb').query_db(query,data)

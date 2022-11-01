@@ -226,3 +226,12 @@ fieldset{
     justify-content: right;
     margin: 20px;
 }
+
+/* =========================== */
+
+.edit_comment_area{
+    display: block;
+
+    margin: 0 auto;
+}
+

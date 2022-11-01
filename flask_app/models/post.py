@@ -34,7 +34,7 @@ class Post:
 
     @classmethod
     def get_post(cls,data):
-        query = "SELECT * FROM posts WHERE posts.post_id = %(id)s;"
+        query = "SELECT * FROM posts WHERE posts.post_id = %(post_id)s;"
         return connectToMySQL('mydb').query_db(query,data)
 
     @classmethod
@@ -51,3 +51,13 @@ class Post:
         query = "SELECT * FROM posts LEFT JOIN comments ON posts.post_id = comments.post_id WHERE posts.post_id =  %(post_id)s;"
         results = connectToMySQL('mydb').query_db(query,data)
         return results
+    
+    @classmethod
+    def edit_post(cls,data):
+        query = "UPDATE posts SET subject = %(subject)s, post_body = %(post_body)s, updated_at = NOW() WHERE posts.post_id = %(post_id)s;"
+        return connectToMySQL('mydb').query_db(query,data)
+
+    @classmethod
+    def delete_post(cls,data):
+        query = "DELETE FROM posts WHERE posts.post_id = %(post_id)s"
+        return connectToMySQL('mydb').query_db(query,data)

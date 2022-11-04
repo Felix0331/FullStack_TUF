@@ -1,13 +1,10 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 
-
-
 class Comment:
     def __init__(self, data):
         self.comment_id = data['comment_id']
         self.comment_body = data['comment_body']
-        self.upvotes = data['upvotes']
         self.commenter_name = data['commenter_name']
         self.users_id = data['users_id']
         self.post_id = data['post_id']
@@ -26,20 +23,20 @@ class Comment:
     @classmethod
     def get_comment(cls,data):
         query = "SELECT * FROM comments WHERE comments.comment_id = %(comment_id)s;"
-        return connectToMySQL('mydb').query_db(query,data)
+        return connectToMySQL('tuf_db').query_db(query,data)
 
 
     @classmethod
     def add_comment(cls,data):
-        query = "INSERT INTO comments (comment_body, upvotes, commenter_name, users_id, post_id, created_at, updated_at) VALUES (%(comment_body)s,%(upvotes)s,%(commenter_name)s,%(users_id)s,%(post_id)s,NOW(),NOW());"
-        return connectToMySQL('mydb').query_db(query,data)
+        query = "INSERT INTO comments (comment_body, commenter_name, users_id, posts_id, created_at, updated_at) VALUES (%(comment_body)s,%(commenter_name)s,%(users_id)s,%(posts_id)s,NOW(),NOW());"
+        return connectToMySQL('tuf_db').query_db(query,data)
 
     @classmethod
     def edit_comment(cls,data):
         query = "UPDATE comments SET comment_body = %(comment_body)s, updated_at = NOW() WHERE comments.comment_id = %(comment_id)s;"
-        return connectToMySQL('mydb').query_db(query,data)
+        return connectToMySQL('tuf_db').query_db(query,data)
         
     @classmethod
     def delete_comment(cls,data):
         query = "DELETE FROM comments WHERE comments.comment_id = %(comment_id)s"
-        return connectToMySQL('mydb').query_db(query,data)
+        return connectToMySQL('tuf_db').query_db(query,data)

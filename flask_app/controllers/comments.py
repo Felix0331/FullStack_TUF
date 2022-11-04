@@ -13,16 +13,11 @@ def create_new_comment(post_id):
     
     data={
         'comment_body':request.form['comment_body'],
-        'upvotes':1,
         'commenter_name':session['name'],
         'users_id':session['user_id'],
-        'post_id': post_id,
+        'posts_id': post_id,
     }
-    print("&&&&&&&&&^^^^^^^^^^^^^^&&&&&&&&&&&&^^^^^^^^^")
-    print(data)
-    comment_id = Comment.add_comment(data)
-    print(comment_id)
-
+    Comment.add_comment(data)
     return redirect(f'/show/{post_id}')
 
 @app.route('/edit_comment/<int:comment_id>')
@@ -35,10 +30,9 @@ def edit_comment(comment_id):
     }
     comment_data = Comment.get_comment(data)
     data_2 = {
-        'post_id': comment_data[0]['post_id']
+        'post_id': comment_data[0]['posts_id']
     }
     post_to_edit = Post.get_post(data_2)
-    print(post_to_edit)
     return render_template('editComment.html',post = post_to_edit[0],comment = comment_data[0])
 
 @app.route('/update_comment/<int:comment_id>', methods = ['POST'])
@@ -49,9 +43,8 @@ def update_comment(comment_id):
         'comment_id':comment_id,
         'comment_body':request.form['comment_body'],
     }
-    print("==========================================")
+
     p_id = request.form['post_id']
-    print(data)
     Comment.edit_comment(data)
     return redirect(f'/show/{p_id}')
 

@@ -30,68 +30,61 @@
                 <li><a href="">TechU</a></li>
             </ul>
         </div>
-        <div class="post_content">
 
-            <div class="comment1">
-                <h3 class="h3post">{{post[0].subject}}</h3>
-                <h4>post by: {{post[0].poster_name}}</h4>
-                <p>
-                    {{post[0].post_body}}
-                </p>
-                {% if post[0].users_id == session['user_id']%}
-                            <td><a href="/edit/{{post[0].post_id}}">edit</a> | <a href="/delete/{{post[0].post_id}}">delete</a></td>
-                        
-                {%endif%}
-            </div>
-            <br>
-            <div class="comment2">
-            
-                <h3 class="h3post">Comments</h3>
-                {% for comment in post %}
-                <p class="individual_comment">{{comment.comment_body}}</p>
-                <p>Comment by: <a href="">{{comment.commenter_name}}</a></p>
-                {% if post[0].commenter_id == session['user_id']%}
-                            <td><a href="/edit/{{post[0].post_id}}">edit</a> | <a href="/delete/{{post[0].post_id}}">delete</a></td>
-                        
-                {%endif%}
-                {% endfor %}
-               
-            </div>
-            <br>
-            <div class="comment3">
-            
-                <h3 class="h3post">Add your comment here</h3>
-                <form action="/comment/{{post[0].post_id}}" method="POST">
-                    <textarea name="comment_body" id="" cols="100" rows="10"></textarea><br><br>
+        <div class="new_post">
+            <form action="/edit_post/{{post.post_id}}" method="POST">
 
-                    <button class="button1">Post</button>
-                    
-                </form>
-            
-            </div>
+                <label for="subject">Subject</label><br>
+                <input class="post_content" type="text" name="subject" id="" value="{{post.subject}}"><br>
+
+                <label for="body">Body</label><br>
+                <textarea class="post_content" name="post_body" id="" cols="20"
+                    rows="4">{{post.post_body}}</textarea><br>
+
+                <fieldset>
+                    <legend>Tags:</legend>
+                    <div class="tag_container">
+                        {% for tag in tags%}
+
+                            {% for p_t in post_tag_list%}
+                        
+                                {% if tag['tag_name'] == p_t['tag_name']%}
+                                <input type="checkbox" name="tags" value="{{tag['tag_id']}}" checked>{{tag['tag_name']}} <br>
+
+                                {%endif%}
+                            {% endfor %}
+                        
+                            <input type="checkbox" name="tags" value="{{tag['tag_id']}}" >{{tag['tag_name']}} <br>
+
+                    {% endfor %}
+                        
+                    </div>
+                </fieldset>
+                <input type="submit" value="Edit">
+            </form>
         </div>
 
-    </div>
 
-    <footer class="bottom_content">
-        <div class="bottom_links">
-            <a class="footers" href="https://aws.amazon.com/privacy/?nc1=f_pr" target="_blank">Privacy</a>
-            <a class="footers" href="https://aws.amazon.com/terms/?nc1=f_pr" target="_blank">Site Terms</a>
-            <a class="footers" href="https://aws.amazon.com/#" target="_blank">Cookie Preference</a>
-        </div>
-        <h3>copyright 2022, Amazon Web Services, Inc. or its affiliates. All rights reserved.</h3>
-    </footer>
 
-    <script>
-        function myFunction() {
-            var x = document.getElementById("links");
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "block";
+        <footer class="bottom_content">
+            <div class="bottom_links">
+                <a class="footers" href="https://aws.amazon.com/privacy/?nc1=f_pr" target="_blank">Privacy</a>
+                <a class="footers" href="https://aws.amazon.com/terms/?nc1=f_pr" target="_blank">Site Terms</a>
+                <a class="footers" href="https://aws.amazon.com/#" target="_blank">Cookie Preference</a>
+            </div>
+            <h3>copyright 2022, Amazon Web Services, Inc. or its affiliates. All rights reserved.</h3>
+        </footer>
+
+        <script>
+            function myFunction() {
+                var x = document.getElementById("links");
+                if (x.style.display === "block") {
+                    x.style.display = "none";
+                } else {
+                    x.style.display = "block";
+                }
             }
-        }
-    </script>
+        </script>
 
 </body>
 

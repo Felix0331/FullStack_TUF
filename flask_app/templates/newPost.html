@@ -36,21 +36,9 @@
                 <fieldset>
                     <legend>Tags:</legend>
                     <div class="tag_container">
-                    <input type="checkbox" name="tags" value="s3">S3 <br>
-                    <input type="checkbox" name="tags" value="lambda">Lambda <br>
-                    <input type="checkbox" name="tags" value="rds">RDS <br>
-                    <input type="checkbox" name="tags" value="dynamo">Dynamo DB <br>
-                    <input type="checkbox" name="tags" value="personal">Personal <br>
-                    <input type="checkbox" name="tags" value="s3">S3 <br>
-                    <input type="checkbox" name="tags" value="lambda">Lambda <br>
-                    <input type="checkbox" name="tags" value="rds">RDS <br>
-                    <input type="checkbox" name="tags" value="dynamo">Dynamo DB <br>
-                    <input type="checkbox" name="tags" value="personal">Personal <br>
-                    <input type="checkbox" name="tags" value="s3">S3 <br>
-                    <input type="checkbox" name="tags" value="lambda">Lambda <br>
-                    <input type="checkbox" name="tags" value="rds">RDS <br>
-                    <input type="checkbox" name="tags" value="dynamo">Dynamo DB <br>
-                    <input type="checkbox" name="tags" value="personal">Personal <br>
+                    {% for tag in tags %}
+                    <input type="checkbox" name="tags" value="{{tag['tag_id']}}">{{tag['tag_name']}} <br>
+                    {% endfor %}
         </div>
         </fieldset>
         <input type="submit" value="Post">

@@ -29,8 +29,6 @@ def register():
         return redirect('/')
     # create the hash
     pw_hash = bcrypt.generate_password_hash(request.form['password'])
-    print(pw_hash)
-
     data = {
         "first_name": request.form['first_name'],
         "last_name": request.form['last_name'],
@@ -46,7 +44,6 @@ def register():
     first_name = request.form['first_name']
     last_name = request.form['last_name']
     session['name'] = f'{first_name} {last_name}'
-    print(session['name'])
     return redirect("/home")
 
 @app.route('/login', methods=['POST'])
@@ -59,12 +56,10 @@ def login():
         flash("Invalid Email/Password")
         return redirect("/")
     if not bcrypt.check_password_hash(user_in_db.password, request.form['password']):
-
         flash("Invalid Email/Password")
         return redirect('/')
 
     session['user_id'] = user_in_db.id
-    print(session['user_id'])
     session['first_name'] = user_in_db.first_name
     first_name = user_in_db.first_name
     last_name = user_in_db.last_name

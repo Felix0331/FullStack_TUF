@@ -34,21 +34,30 @@
                     <input type="text" placeholder=" &#x1F50D;   Search Here">
                     <button class="blue_button">Advanced Search</button>
                 </form>
+                <div class="dropdown">
+                    <button class="dropbtn">Search By Tag</button>
+                    <div class="dropdown-content">
+                        {% for tag in tags %}
+                        <a href="/search/{{tag['tag_id']}}">{{tag['tag_name']}}</a>
+                        {% endfor %}
+
+                    </div>
+                </div>
                 <form action="">
                     <input class="blue_button" type="button" value="Create New Post">
                 </form>
             </div>
             <div class="top_posts">
                 {% for post in posts %}
-                        <h3><a href="/show/{{post.post_id}}">{{post.subject}}</a></h3>
-                        <div class="top_answer">
-                            <p>Top Answer Here</p>
-                        </div>
-                        {% endfor %}
-                <div class="btns">
-                    <form action=""><input type="button" value="Expand"></form>
-                    <form action=""><input type="button" value="Share"></form>
+                <h3><a href="/show/{{post.post_id}}">{{post.subject}}</a>
+                    <div class="btns">
+                        <form action=""><input type="button" value="Share"></form>
+                    </div>
+                </h3>
+                <div class="top_answer">
+                    <p>Top Answer Here</p>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>

@@ -4,7 +4,6 @@ import re	# the regex module
 from flask_bcrypt import Bcrypt
 from flask_app import app      
 bcrypt = Bcrypt(app) 
-# from flask_app.models import car
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
 class User:
@@ -17,7 +16,6 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        # self.purchased_cars = []
 
 
     @staticmethod
@@ -49,17 +47,17 @@ class User:
     @classmethod
     def add_user( cls , data ):
         query = "INSERT INTO users ( first_name, last_name, alias, email, password, created_at , updated_at ) VALUES (%(first_name)s,%(last_name)s,%(alias)s,%(email)s,%(password)s,NOW(),NOW());"
-        return connectToMySQL('mydb').query_db(query,data)
+        return connectToMySQL('tuf_db').query_db(query,data)
 
     @classmethod
     def get_user(cls,data):
         query = "SELECT * FROM users WHERE users.id = %(id)s;"
-        return connectToMySQL('mydb').query_db(query,data)
+        return connectToMySQL('tuf_db').query_db(query,data)
 
     @classmethod
     def get_by_email(cls,data):
         query = "SELECT * FROM users WHERE email = %(email)s;"
-        result = connectToMySQL("mydb").query_db(query,data)
+        result = connectToMySQL("tuf_db").query_db(query,data)
         # Didn't find a matching user
         if len(result) < 1:
             return False

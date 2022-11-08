@@ -13,7 +13,9 @@
 <body>
     <div class="header">
         <!-- <h1>AWS Tech U Forums</h1> -->
-        <img class="main_logo" src="{{url_for('static',filename='LOGO.png')}}" alt="AWS Forms Logo">
+        <a href="/home">
+            <img class="main_logo" src="{{url_for('static',filename='LOGO.png')}}" alt="AWS Forms Logo">
+        </a>
 
 
         <form action="/logout"> <button class="logout">Logout</button></form>
@@ -34,14 +36,14 @@
 
             <div class="comment1">
                 <h3 class="h3post">{{post[0].subject}}</h3>
-                <h4>post by: {{post[0].poster_name}}</h4>
+                <h4>post by: <a href="/user/{{post[0].users_id}}" >{{post[0].poster_name}}</a></h4>
                 <p>
                     {{post[0].post_body}}
                 </p>
                 <!-- Tag list    -->
                 <p>
                     {% for tag in tag_list %}
-                    <a href="">{{tag['tag_name']}},</a>
+                    <a href="/search/{{tag['tag_id']}}">{{tag['tag_name']}},</a>
                     {% endfor %}
                 </p>
 
@@ -68,7 +70,7 @@
                 <h3 class="h3post">Comments</h3>
                 {% for comment in post %}
                 <p class="individual_comment">{{comment.comment_body}}</p>
-                <p>Comment by: <a href="">{{comment.commenter_name}}</a></p>
+                <p>Comment by: <a href="/user/{{comment['comments.users_id']}}">{{comment.commenter_name}}</a></p>
                 {% if comment['comments.users_id'] == session['user_id']%}
                 <a href="/edit_comment/{{comment.comment_id}}">edit</a> | <a
                     href="/delete_comment/{{comment.comment_id}}/{{post[0].post_id}}">delete</a>

@@ -5,16 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
-    <title>Tech U Forums</title>
+
 </head>
 
 <body>
     <div class="header">
+        <!-- <h1>AWS Tech U Forums</h1> -->
         <a href="/home">
             <img class="main_logo" src="{{url_for('static',filename='LOGO.png')}}" alt="AWS Forms Logo">
         </a>
+
+
         <form action="/logout"> <button class="logout">Logout</button></form>
+
     </div>
     <div class="main">
         <div class="nav">
@@ -27,28 +32,44 @@
                 <li><a href="">TechU</a></li>
             </ul>
         </div>
-        <div class="edit_comment_area">
-            <div>
-                <h1>Edit Your Comment </h1>
-                <h3>{{post.subject}}</h3>
-                <p>{{post.post_body}}</p>
+        <div class="user_info">
+            <h1>User Profile</h1>
+            <div class="user_card">
+                <h3>{{user_info.first_name}} {{user_info.last_name}}</h3>
+                <p>Alias:
+                    <a href="https://phonetool.amazon.com/users/{{user_info.alias}}" target="_blank"
+                        rel="noopener noreferrer">{{user_info.alias}}</a>
 
+                </p>
+                <p href="">Email: {{user_info.email}}</p>
             </div>
+            <div class="user_content_info">
+                <div class="user_posts">
+                    <h4>{{user_info.first_name}}'s Posts</h4>
+                    {% for post in user_posts %}
+                    <div class="post_user">
+                        <p><a href="/show/{{post.post_id}}">{{post.subject}}</a></p>
 
-            <div class="">
-
-                <h3 class="h3post">Edit your comment here</h3>
-                <form action="/update_comment/{{comment.comment_id}}" method="POST">
-                    <input type="hidden" name="post_id" id="" value="{{post.post_id}}">
-                    <textarea name="comment_body" id="" cols="100" rows="10">{{comment.comment_body}}</textarea><br><br>
-                    <button class="button1">Edit</button>
-
-                </form>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+                <div class="user_comments">
+                    <h4>{{user_info.first_name}}'s Comments</h4>
+                    {% for comment in user_comments %}
+                    <div class="comment_user">
+                        <p><a href="/show/{{comment.post_id}}">{{comment.comment_body}}</a></p>
+    
+                    </div>
+                    {% endfor %}
+                    
+                </div>
 
             </div>
         </div>
 
     </div>
+
     <footer class="bottom_content">
         <div class="bottom_links">
             <a class="footers" href="https://aws.amazon.com/privacy/?nc1=f_pr" target="_blank">Privacy</a>
@@ -57,6 +78,7 @@
         </div>
         <h3>copyright 2022, Amazon Web Services, Inc. or its affiliates. All rights reserved.</h3>
     </footer>
+
     <script>
         function myFunction() {
             var x = document.getElementById("links");
@@ -67,6 +89,7 @@
             }
         }
     </script>
+
 </body>
 
 </html>

@@ -108,11 +108,14 @@ def show_post(post_id):
         'user_id': session['user_id']
     }
     post = Post.get_post_with_comments(data)
+    print(post)
     num_votes = Vote.get_votes(data)
     # This check_vote class function checks if the current session user has already liked the post
     # purpose is to only have one vote for one person.
     check_vote = Vote.check_vote(data2)
     post_tag_list = Tag.get_post_tags(data)
+    print("888*********************")
+    print(post_tag_list)
     return render_template('postView.html',post = post, votes = num_votes[0], check_vote = check_vote,tag_list = post_tag_list)
 
 @app.route('/delete/<int:post_id>')

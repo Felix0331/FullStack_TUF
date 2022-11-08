@@ -33,7 +33,8 @@
         <div class="home_main_content">
             <div class="creat_search_bts">
                 <form action="/add_new_post"><button class="blue_button">Create a Post</button></form>
-                <button class="blue_button">Search</button>
+                <form action="/search"><button class="blue_button">Search</button></form>
+
             </div>
             <div class="faq_topq">
                 <div class="faq">
@@ -74,7 +75,7 @@
                     <h2>Top Questions</h2>
                     <ul class="q_list_items">
                         {% for post in posts %}
-                        <li><a href="/show/{{post.post_id}}">{{post.subject}}</a></li>
+                        <li><a href="/show/{{post.post_id}}">{{post.subject}}</a> Likes: {{post.Votes}}</li>
                         {% endfor %}
                     </ul>
                 </div>

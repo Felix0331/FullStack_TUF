@@ -25,6 +25,11 @@ class Comment:
         query = "SELECT * FROM comments WHERE comments.comment_id = %(comment_id)s;"
         return connectToMySQL('tuf_db').query_db(query,data)
 
+    @classmethod
+    def get_user_comments(cls,data):
+        query = "SELECT * FROM posts LEFT JOIN comments ON posts.post_id = comments.posts_id WHERE comments.users_id =  %(users_id)s;"
+        results = connectToMySQL('tuf_db').query_db(query,data)
+        return results
 
     @classmethod
     def add_comment(cls,data):

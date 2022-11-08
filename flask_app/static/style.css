@@ -271,3 +271,15 @@ fieldset{
   .dropdown:hover .dropdown-content {display: block;}
   
   .dropdown:hover .dropbtn {background-color: rgb(90, 163, 236);}
+
+/* User Page ======================================= */
+
+.user_content_info{
+        width: 700px;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+}
+.user_card{
+    padding:50px ;
+}

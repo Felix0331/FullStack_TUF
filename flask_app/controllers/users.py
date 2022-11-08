@@ -5,6 +5,7 @@ bcrypt = Bcrypt(app)
 
 from flask_app.models.user import User
 from flask_app.models.post import Post
+from flask_app.models.comment import Comment
 
 @app.route('/')
 def login_reg_page():
@@ -15,8 +16,8 @@ def dashboard():
     if not session:
         flash("Please login")
         return redirect('/')
-    posts = Post.get_all_posts()
-    return render_template('home.html', posts = posts)
+    posts_w_votes = Post.get_posts_w_votes()
+    return render_template('home.html', posts = posts_w_votes)
 
 @app.route('/logout')
 def logout():
@@ -66,3 +67,14 @@ def login():
     session["name"] = f'{first_name} {last_name}'
 
     return redirect("/home")
+
+@app.route('/user/<int:user_id>')
+def render_user_page(user_id):
+    data={'id':user_id}
+    data1={'users_id':user_id}
+    user_info = User.get_user(data)
+    user_posts = Post.get_user_posts(data1)
+    user_comments = Comment.get_user_comments(data1)
+    print(user_comments)
+    return render_template('userView.html',user_info = user_info[0],user_posts = user_posts,user_comments = user_comments)
+

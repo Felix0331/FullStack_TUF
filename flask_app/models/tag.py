@@ -12,7 +12,7 @@ class Tag:
 
     @classmethod
     def get_post_tags(cls,data):
-        query = "SELECT tags.tag_name FROM tags, tag_map WHERE tags.tag_id = (SELECT tag_map.tags_id WHERE tag_map.posts_id = %(post_id)s);"
+        query = "SELECT tags.tag_name, tags.tag_id FROM tags, tag_map WHERE tags.tag_id = (SELECT tag_map.tags_id WHERE tag_map.posts_id = %(post_id)s);"
         return connectToMySQL('tuf_db').query_db(query,data)
 
     @classmethod

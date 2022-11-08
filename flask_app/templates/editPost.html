@@ -13,7 +13,9 @@
 <body>
     <div class="header">
         <!-- <h1>AWS Tech U Forums</h1> -->
-        <img class="main_logo" src="{{url_for('static',filename='LOGO.png')}}" alt="AWS Forms Logo">
+        <a href="/home">
+            <img class="main_logo" src="{{url_for('static',filename='LOGO.png')}}" alt="AWS Forms Logo">
+        </a>
 
 
         <form action="/logout"> <button class="logout">Logout</button></form>
@@ -53,9 +55,7 @@
 
                                 {%endif%}
                             {% endfor %}
-                        
                             <input type="checkbox" name="tags" value="{{tag['tag_id']}}" >{{tag['tag_name']}} <br>
-
                     {% endfor %}
                         
                     </div>

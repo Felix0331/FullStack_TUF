@@ -43,6 +43,15 @@ class Post:
         return posts
 
     @classmethod
+    def get_user_posts(cls,data):
+        query = "SELECT * FROM posts Where posts.users_id = %(users_id)s;"
+        posts = []
+        results = connectToMySQL('tuf_db').query_db(query,data)
+        for post in results:
+            posts.append(cls(post))
+        return posts
+
+    @classmethod
     def get_post_with_comments(cls,data):
         query = "SELECT * FROM posts LEFT JOIN comments ON posts.post_id = comments.posts_id WHERE posts.post_id =  %(post_id)s;"
         results = connectToMySQL('tuf_db').query_db(query,data)
@@ -57,3 +66,8 @@ class Post:
     def delete_post(cls,data):
         query = "DELETE FROM posts WHERE posts.post_id = %(post_id)s"
         return connectToMySQL('tuf_db').query_db(query,data)
+
+    @classmethod
+    def get_posts_w_votes(cls):
+        query = "Select * from posts JOIN (SELECT votes.posts_id,COUNT(votes.posts_id) AS Votes FROM votes group by votes.posts_id order by Votes Desc) as Votes ON posts.post_id = Votes.posts_id;"
+        return connectToMySQL('tuf_db').query_db(query)

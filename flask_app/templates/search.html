@@ -40,17 +40,13 @@
                     <button class="dropbtn">Search By Tag</button>
                     <div class="dropdown-content">
                         {% for tag in tags %}
-                        <a href="/search/{{tag['tag_id']}}">{{tag['tag_name']}}</a>
+                        <a href="/search_by/{{tag['tag_id']}}">{{tag['tag_name']}}</a>
                         {% endfor %}
 
                     </div>
                 </div>
                 <form action="/add_new_post">
-<<<<<<< HEAD
                     <input class="blue_button" type="submit" value="Create New Post">
-=======
-                    <button class="blue_button"> Create a Post </button>
->>>>>>> 0b77fda60fa210b0e2f9113267deb04456c174fb
                 </form>
             </div>
             <div class="top_posts">

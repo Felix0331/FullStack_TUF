@@ -16,22 +16,27 @@ def add_post():
     tags = Tag.get_tags()
     return render_template('newPost.html',tags = tags)
 
-# This route function can have two routes, one with var and one w/ out
-# what is rendered depends on whether a var is passed or not.
-@app.route('/search/', defaults={'tag_id':None})
-@app.route('/search/<int:tag_id>')
-def search_posts(tag_id):
+
+@app.route('/lookup/')
+def search_posts():
+    if not session:
+        flash("Please login")
+        return redirect('/')
+    posts = Post.get_all_posts()
+    tags = Tag.get_tags()
+    return render_template('search.html', posts=posts,tags = tags)
+
+@app.route('/search_by/<int:tag_id>')
+def search_posts_byTag(tag_id):
     print(tag_id)
     if not session:
         flash("Please login")
         return redirect('/')
-    if tag_id == None:
-        posts = Post.get_all_posts()
-    else:
-        data={
+    
+    data={
             'tag_id':tag_id
         }
-        posts = Tag.get_post_by_tag(data)
+    posts = Tag.get_post_by_tag(data)
     tags = Tag.get_tags()
     return render_template('search.html', posts=posts,tags = tags)
 

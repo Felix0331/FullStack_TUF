@@ -71,3 +71,9 @@ class Post:
     def get_posts_w_votes(cls):
         query = "Select * from posts JOIN (SELECT votes.posts_id,COUNT(votes.posts_id) AS Votes FROM votes group by votes.posts_id order by Votes Desc) as Votes ON posts.post_id = Votes.posts_id;"
         return connectToMySQL('tuf_db').query_db(query)
+
+    @classmethod
+    def get_searched_post(cls,data):
+        search_word = data['key_word']
+        query = f"select * from posts where subject like '%{search_word}%';"
+        return connectToMySQL('tuf_db').query_db(query)

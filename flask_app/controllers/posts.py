@@ -160,3 +160,15 @@ def delete_vote(post_id):
     Vote.delete_vote(data)
     return redirect(f'/show/{post_id}')
 
+    # ================================== Search ===================================
+@app.route('/search_word', methods=['POST'])
+def search_post():
+    if not session:
+        flash("Please login")
+        return redirect('/')
+    print(request.form['key_word'])
+    data={
+        'key_word':request.form['key_word'],
+    }
+    results = Post.get_searched_post(data)
+    return render_template('search.html', posts = results)

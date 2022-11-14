@@ -17,6 +17,7 @@ def dashboard():
         flash("Please login")
         return redirect('/')
     posts_w_votes = Post.get_posts_w_votes()
+
     return render_template('home.html', posts = posts_w_votes)
 
 @app.route('/logout')

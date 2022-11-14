@@ -50,6 +50,9 @@
                 </form>
             </div>
             <div class="top_posts">
+                {% if not posts%}
+                <h4>No Posts Found</h4>
+                {%endif%}
                 {% for post in posts %}
                 <h3><a href="/show/{{post.post_id}}">{{post.subject}}</a>
                     <div class="btns">

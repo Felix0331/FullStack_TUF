@@ -171,4 +171,5 @@ def search_post():
         'key_word':request.form['key_word'],
     }
     results = Post.get_searched_post(data)
-    return render_template('search.html', posts = results)
+    tags = Tag.get_tags()
+    return render_template('search.html', posts = results, tags = tags)

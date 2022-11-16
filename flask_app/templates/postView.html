@@ -28,8 +28,8 @@
             </a>
             <ul id="links">
                 <li><a href="/home">home</a></li>
-                <li><a href="/search">search</a></li>
-                <li><a href="">TechU</a></li>
+                <li><a href="/lookup">search</a></li>
+                <li><a href="/home">TechU</a></li>
             </ul>
         </div>
         <div class="post_content">
@@ -43,7 +43,7 @@
                 <!-- Tag list    -->
                 <p>
                     {% for tag in tag_list %}
-                    <a href="/search/{{tag['tag_id']}}">{{tag['tag_name']}},</a>
+                    <a href="/search_by/{{tag['tag_id']}}">{{tag['tag_name']}},</a>
                     {% endfor %}
                 </p>
 
